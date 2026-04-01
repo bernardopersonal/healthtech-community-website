@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthTech Community Valencia | Biotech, MedTech, Life Sciences & Pharma</title>
+  <meta name="description" content="Professional networking community for English-speaking professionals in Biotech, MedTech, Life Sciences and Pharma in Valencia, Spain.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 171.28 171.28'%3E%3Cpath fill='%2331a97f' d='M85.64,95.57c-11.72,0-21.21,9.5-21.21,21.21v.38c0,7.57-6.13,13.7-13.7,13.7h-13.7V37.03C37.03,16.58,20.45,0,0,0v132.3c0,21.53,17.45,38.98,38.98,38.98h67.88v-54.49c0-11.72-9.5-21.21-21.21-21.21Z'/%3E%3Cpath fill='%231b7f5a' d='M64.42,0v54.49c0,11.72,9.5,21.21,21.21,21.21s21.21-9.5,21.21-21.21v-.38c0-7.57,6.13-13.7,13.7-13.7h13.7v93.84c0,20.45,16.58,37.03,37.03,37.03V38.98C171.28,17.45,153.83,0,132.3,0H64.42Z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --deep-green: #1B7F5A;
+      --bright-green: #31A97F;
+      --mint-mist: #E8F5EF;
+      --light-grey: #F5F5F5;
+      --warm-grey: #9B9689;
+      --dark-green-black: #0A1A15;
+      --charcoal: #2C2C2C;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--charcoal);
+      line-height: 1.6;
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Typography ── */
+    h1, h2, h3, h4 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(27,127,90,0.08);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(10,26,21,0.08); }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo svg { height: 36px; width: auto; display: block; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--dark-green-black);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--bright-green); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--deep-green);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background: var(--bright-green);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(49,169,127,0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--deep-green);
+      border: 2px solid var(--deep-green);
+    }
+    .btn-outline:hover {
+      background: var(--deep-green);
+      color: var(--white);
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--deep-green);
+    }
+    .btn-white:hover {
+      background: var(--mint-mist);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    /* ── Mobile nav toggle ── */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark-green-black);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(160deg, var(--white) 0%, var(--mint-mist) 100%);
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(49,169,127,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text .tag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bright-green);
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      color: var(--dark-green-black);
+      margin-bottom: 20px;
+    }
+    .hero-text h1 span { color: var(--deep-green); }
+
+    .hero-text p {
+      font-size: 1.125rem;
+      color: var(--charcoal);
+      max-width: 480px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-icon-container {
+      width: 320px;
+      height: 320px;
+      background: var(--deep-green);
+      border-radius: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 24px 64px rgba(27,127,90,0.2);
+      position: relative;
+    }
+    .hero-icon-container svg { width: 180px; height: auto; }
+    .hero-icon-container::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 34px;
+      background: linear-gradient(135deg, var(--bright-green), var(--deep-green));
+      z-index: -1;
+      opacity: 0.4;
+    }
+
+    /* ── Disciplines bar ── */
+    .disciplines {
+      background: var(--deep-green);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .disciplines p {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+    }
+    .disciplines span { color: rgba(255,255,255,0.45); margin: 0 16px; }
+
+    /* ── Section base ── */
+    section { padding: 100px 24px; }
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bright-green);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--dark-green-black);
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--warm-grey);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ── Values / What We Do ── */
+    .values { background: var(--white); }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 56px;
+    }
+    .value-card {
+      padding: 40px 32px;
+      background: var(--light-grey);
+      border-radius: 16px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(10,26,21,0.06);
+    }
+    .value-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--mint-mist);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .value-icon svg { width: 24px; height: 24px; }
+    .value-card h3 {
+      font-size: 1.2rem;
+      color: var(--deep-green);
+      margin-bottom: 12px;
+    }
+    .value-card p {
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      line-height: 1.65;
+    }
+
+    /* ── Newsletter CTA ── */
+    .newsletter {
+      background: var(--deep-green);
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(49,169,127,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .newsletter .section-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .newsletter .section-label { color: rgba(255,255,255,0.6); }
+    .newsletter .section-title { color: var(--white); }
+    .newsletter .section-subtitle {
+      color: rgba(255,255,255,0.75);
+      margin: 0 auto 40px;
+      max-width: 520px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto 24px;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 14px 20px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,0.5); }
+    .newsletter-form input:focus { border-color: var(--bright-green); }
+
+    .newsletter-promise {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.82rem;
+      margin-top: 16px;
+    }
+    .newsletter-promise svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ── Events ── */
+    .events { background: var(--light-grey); }
+    .events-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 56px;
+    }
+    .events-text p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--charcoal);
+      margin-bottom: 28px;
+    }
+    .events-visual {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 300px;
+      border: 1px solid rgba(27,127,90,0.08);
+    }
+    .events-visual svg { width: 48px; height: 48px; margin-bottom: 20px; }
+    .events-visual p {
+      font-size: 0.95rem;
+      color: var(--warm-grey);
+      line-height: 1.6;
+    }
+    .events-visual p strong { color: var(--deep-green); }
+
+    /* ── Origin Story ── */
+    .origin {
+      background: var(--white);
+      border-top: 1px solid rgba(27,127,90,0.06);
+    }
+    .origin-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 48px;
+    }
+    .origin-quote {
+      background: var(--mint-mist);
+      border-radius: 16px;
+      padding: 48px;
+      position: relative;
+    }
+    .origin-quote::before {
+      content: '\201C';
+      font-family: 'Raleway', sans-serif;
+      font-size: 6rem;
+      font-weight: 900;
+      color: var(--bright-green);
+      opacity: 0.3;
+      position: absolute;
+      top: 12px;
+      left: 24px;
+      line-height: 1;
+    }
+    .origin-quote p {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--dark-green-black);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    .origin-text p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+
+    /* ── Founders ── */
+    .founders { background: var(--light-grey); }
+    .founders-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+    .founder-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .founder-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(10,26,21,0.06);
+    }
+    .founder-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--mint-mist), rgba(49,169,127,0.2));
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--deep-green);
+    }
+    .founder-card h3 {
+      font-size: 1.1rem;
+      color: var(--dark-green-black);
+      margin-bottom: 6px;
+    }
+    .founder-card .founder-role {
+      font-size: 0.85rem;
+      color: var(--warm-grey);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .founder-card p.founder-bio {
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+    .founder-card .founder-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--deep-green);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .founder-card .founder-linkedin:hover { color: var(--bright-green); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark-green-black);
+      padding: 56px 24px;
+    }
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-left svg { height: 32px; width: auto; display: block; margin-bottom: 12px; }
+    .footer-left p {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.82rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--bright-green); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid rgba(27,127,90,0.1);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      }
+
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-text p { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { order: -1; }
+      .hero-icon-container { width: 220px; height: 220px; border-radius: 24px; }
+      .hero-icon-container svg { width: 120px; }
+
+      .values-grid { grid-template-columns: 1fr; }
+
+      .newsletter-form { flex-direction: column; }
+
+      .events-content { grid-template-columns: 1fr; }
+
+      .origin-content { grid-template-columns: 1fr; }
+      .origin-quote { order: -1; }
+
+      .founders-grid { grid-template-columns: 1fr 1fr; }
+
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-left svg { margin: 0 auto 12px; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="HealthTech Community Valencia">
+        <svg viewBox="0 0 629.29 171.28" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <g>
+              <path fill="#1b7f5a" d="M207.29,11.64c0-.64.58-1.22,1.22-1.22h7.62c.7,0,1.22.58,1.22,1.22v16.13h18.3V11.64c0-.64.51-1.22,1.22-1.22h7.62c.64,0,1.22.58,1.22,1.22v42.37c0,.64-.58,1.22-1.22,1.22h-7.62c-.7,0-1.22-.58-1.22-1.22v-16.83h-18.3v16.83c0,.64-.51,1.22-1.22,1.22h-7.62c-.64,0-1.22-.58-1.22-1.22V11.64Z"/>
+              <path fill="#1b7f5a" d="M259.89,11.64c0-.64.51-1.22,1.22-1.22h26.5c.7,0,1.22.58,1.22,1.22v6.98c0,.64-.51,1.22-1.22,1.22h-17.73v7.94h14.59c.64,0,1.22.58,1.22,1.22v6.98c0,.7-.58,1.22-1.22,1.22h-14.59v8.64h17.73c.7,0,1.22.58,1.22,1.22v6.98c0,.64-.51,1.22-1.22,1.22h-26.5c-.7,0-1.22-.58-1.22-1.22V11.64Z"/>
+              <path fill="#1b7f5a" d="M294.84,53.56l20.03-43.07c.19-.38.64-.7,1.09-.7h.64c.45,0,.9.32,1.09.7l20.03,43.07c.38.83-.13,1.66-1.09,1.66h-7.1c-1.15,0-1.66-.38-2.24-1.6l-2.3-5.06h-17.41l-2.3,5.12c-.32.77-1.02,1.53-2.3,1.53h-7.04c-.96,0-1.47-.83-1.09-1.66ZM321.14,39.86l-4.86-10.56h-.07l-4.8,10.56h9.73Z"/>
+              <path fill="#1b7f5a" d="M346.16,11.64c0-.64.51-1.22,1.22-1.22h7.61c.64,0,1.22.58,1.22,1.22v34.17h15.23c.7,0,1.22.58,1.22,1.22v6.98c0,.64-.51,1.22-1.22,1.22h-24.06c-.7,0-1.22-.58-1.22-1.22V11.64Z"/>
+              <path fill="#1b7f5a" d="M385.39,19.83h-9.15c-.7,0-1.22-.58-1.22-1.22v-6.98c0-.64.51-1.22,1.22-1.22h28.42c.7,0,1.22.58,1.22,1.22v6.98c0,.64-.51,1.22-1.22,1.22h-9.15v34.17c0,.64-.58,1.22-1.22,1.22h-7.68c-.64,0-1.22-.58-1.22-1.22V19.83Z"/>
+              <path fill="#1b7f5a" d="M415.47,11.64c0-.64.58-1.22,1.22-1.22h7.62c.7,0,1.21.58,1.21,1.22v16.13h18.3V11.64c0-.64.51-1.22,1.22-1.22h7.62c.64,0,1.22.58,1.22,1.22v42.37c0,.64-.58,1.22-1.22,1.22h-7.62c-.7,0-1.22-.58-1.22-1.22v-16.83h-18.3v16.83c0,.64-.51,1.22-1.21,1.22h-7.62c-.64,0-1.22-.58-1.22-1.22V11.64Z"/>
+              <path fill="#1b7f5a" d="M473.84,19.83h-9.15c-.7,0-1.22-.58-1.22-1.22v-6.98c0-.64.51-1.22,1.22-1.22h28.42c.7,0,1.22.58,1.22,1.22v6.98c0,.64-.51,1.22-1.22,1.22h-9.15v34.17c0,.64-.58,1.22-1.22,1.22h-7.68c-.64,0-1.22-.58-1.22-1.22V19.83Z"/>
+              <path fill="#1b7f5a" d="M503.92,11.64c0-.64.51-1.22,1.22-1.22h26.5c.7,0,1.21.58,1.21,1.22v6.98c0,.64-.51,1.22-1.21,1.22h-17.73v7.94h14.59c.64,0,1.22.58,1.22,1.22v6.98c0,.7-.58,1.22-1.22,1.22h-14.59v8.64h17.73c.7,0,1.21.58,1.21,1.22v6.98c0,.64-.51,1.22-1.21,1.22h-26.5c-.7,0-1.22-.58-1.22-1.22V11.64Z"/>
+              <path fill="#1b7f5a" d="M564.46,9.78c6.4,0,11.14,1.98,15.49,5.95.58.51.58,1.28.07,1.79l-4.99,5.18c-.45.45-1.15.45-1.6,0-2.37-2.11-5.5-3.27-8.64-3.27-7.23,0-12.54,6.02-12.54,13.18s5.38,12.99,12.61,12.99c3.01,0,6.27-1.09,8.58-3.07.45-.38,1.28-.38,1.66.06l4.99,5.31c.45.45.38,1.28-.06,1.73-4.35,4.22-9.86,6.21-15.55,6.21-12.8,0-23.1-10.18-23.1-22.98s10.3-23.1,23.1-23.1Z"/>
+              <path fill="#1b7f5a" d="M590.89,11.64c0-.64.58-1.22,1.22-1.22h7.61c.7,0,1.22.58,1.22,1.22v16.13h18.3V11.64c0-.64.51-1.22,1.22-1.22h7.62c.64,0,1.22.58,1.22,1.22v42.37c0,.64-.58,1.22-1.22,1.22h-7.62c-.7,0-1.22-.58-1.22-1.22v-16.83h-18.3v16.83c0,.64-.51,1.22-1.22,1.22h-7.61c-.64,0-1.22-.58-1.22-1.22V11.64Z"/>
+              <path fill="#1b7f5a" d="M227.48,77.51c6.49,0,11.3,2.01,15.72,6.04.58.52.58,1.3.06,1.82l-5.07,5.26c-.46.45-1.17.45-1.62,0-2.4-2.14-5.59-3.31-8.77-3.31-7.34,0-12.73,6.11-12.73,13.38s5.46,13.19,12.8,13.19c3.05,0,6.37-1.1,8.7-3.12.45-.39,1.3-.39,1.69.06l5.07,5.39c.46.46.39,1.3-.06,1.75-4.42,4.29-10,6.3-15.78,6.3-12.99,0-23.45-10.33-23.45-23.32s10.46-23.45,23.45-23.45Z"/>
+              <path fill="#1b7f5a" d="M274.11,77.51c12.99,0,23.38,10.46,23.38,23.45s-10.39,23.32-23.38,23.32-23.32-10.33-23.32-23.32,10.33-23.45,23.32-23.45ZM274.11,113.88c7.14,0,12.99-5.85,12.99-12.93s-5.85-13.06-12.99-13.06-12.93,5.91-12.93,13.06,5.85,12.93,12.93,12.93Z"/>
+              <path fill="#1b7f5a" d="M313.09,78.55c.06-.58.65-1.04,1.17-1.04h1.04c.33,0,.91.26,1.1.65l15.07,28.06h.13l15.07-28.06c.2-.39.78-.65,1.11-.65h1.04c.52,0,1.1.46,1.17,1.04l7.34,43.65c.13.85-.45,1.43-1.23,1.43h-7.67c-.58,0-1.17-.52-1.23-1.04l-2.92-20.07h-.13l-10.91,21.05c-.19.39-.78.71-1.1.71h-1.17c-.39,0-.91-.33-1.11-.71l-10.98-21.05h-.13l-2.86,20.07c-.06.52-.58,1.04-1.23,1.04h-7.67c-.78,0-1.36-.58-1.23-1.43l7.34-43.65Z"/>
+              <path fill="#1b7f5a" d="M373.36,78.55c.06-.58.65-1.04,1.17-1.04h1.04c.33,0,.91.26,1.1.65l15.07,28.06h.13l15.07-28.06c.2-.39.78-.65,1.11-.65h1.04c.52,0,1.1.46,1.17,1.04l7.34,43.65c.13.85-.45,1.43-1.23,1.43h-7.67c-.58,0-1.17-.52-1.23-1.04l-2.92-20.07h-.13l-10.91,21.05c-.19.39-.78.71-1.1.71h-1.17c-.39,0-.91-.33-1.11-.71l-10.98-21.05h-.13l-2.86,20.07c-.06.52-.58,1.04-1.23,1.04h-7.66c-.78,0-1.36-.58-1.23-1.43l7.34-43.65Z"/>
+              <path fill="#1b7f5a" d="M428.51,79.39c0-.65.59-1.23,1.23-1.23h7.99c.71,0,1.23.58,1.23,1.23v26.31c0,4.55,3.38,8.18,7.99,8.18s8.12-3.64,8.12-8.18v-26.31c0-.65.52-1.23,1.23-1.23h7.99c.65,0,1.23.58,1.23,1.23v26.83c0,9.87-8.31,18.06-18.58,18.06s-18.45-8.18-18.45-18.06v-26.83Z"/>
+              <path fill="#1b7f5a" d="M479.18,78.68c0-.65.58-1.17,1.23-1.17h1.62l25.92,24.94h.06v-23.06c0-.65.52-1.23,1.23-1.23h7.79c.65,0,1.23.58,1.23,1.23v43.72c0,.65-.58,1.17-1.23,1.17h-1.04c-.19,0-.71-.19-.84-.33l-25.66-25.79h-.07v24.23c0,.65-.52,1.23-1.23,1.23h-7.73c-.65,0-1.23-.58-1.23-1.23l-.06-43.72Z"/>
+              <path fill="#1b7f5a" d="M532.7,79.39c0-.65.58-1.23,1.23-1.23h7.79c.65,0,1.23.58,1.23,1.23v43c0,.65-.59,1.23-1.23,1.23h-7.79c-.65,0-1.23-.58-1.23-1.23v-43Z"/>
+              <path fill="#1b7f5a" d="M563.23,87.71h-9.29c-.71,0-1.23-.59-1.23-1.23v-7.08c0-.65.52-1.23,1.23-1.23h28.84c.71,0,1.23.58,1.23,1.23v7.08c0,.65-.52,1.23-1.23,1.23h-9.29v34.69c0,.65-.58,1.23-1.23,1.23h-7.79c-.65,0-1.23-.58-1.23-1.23v-34.69Z"/>
+              <path fill="#1b7f5a" d="M604.34,101.74l-14.35-21.7c-.52-.85,0-1.88,1.04-1.88h8.44c.52,0,.85.32,1.04.58l9.03,13.32,9.03-13.32c.19-.26.45-.58,1.04-.58h8.44c1.04,0,1.56,1.04,1.04,1.88l-14.55,21.63v20.72c0,.65-.59,1.23-1.23,1.23h-7.73c-.71,0-1.23-.58-1.23-1.23v-20.66Z"/>
+            </g>
+            <g>
+              <path fill="#31a97f" d="M216.82,153.39c-.27.86-.55,1.85-.86,2.96-.22.79-.46,1.69-.71,2.65-.25-.94-.49-1.84-.72-2.63-.32-1.13-.62-2.12-.89-2.98l-2.94-8.62h-3.26l5.91,16.59h3.77l5.81-16.59h-3.25l-2.85,8.62Z"/>
+              <path fill="#31a97f" d="M241.87,144.77l-5.79,16.59h3.25l1.36-4.11h6.21l1.41,4.11h3.26l-5.92-16.59h-3.77ZM241.48,154.86l.7-2.12c.27-.86.55-1.86.85-2.99.21-.81.45-1.72.7-2.68.25.95.5,1.85.72,2.65.31,1.13.61,2.13.9,3.02l.72,2.12h-4.6Z"/>
+              <polygon fill="#31a97f" points="270.53 144.77 267.56 144.77 267.56 161.36 277.86 161.36 277.86 158.86 270.53 158.86 270.53 144.77"/>
+              <polygon fill="#31a97f" points="297.2 154.23 304.43 154.23 304.43 151.75 297.2 151.75 297.2 147.28 305.01 147.28 305.01 144.77 294.23 144.77 294.23 161.36 305.05 161.36 305.05 158.86 297.2 158.86 297.2 154.23"/>
+              <path fill="#31a97f" d="M332.77,153.48c0,.41,0,.91.03,1.5.02.59.05,1.21.09,1.87.02.32.05.63.07.94-.15-.34-.3-.67-.45-.98-.29-.59-.57-1.12-.83-1.6-.27-.48-.52-.91-.76-1.28l-5.74-9.14h-3.36v16.59h3.03v-8.24c0-.35-.01-.81-.04-1.38-.03-.57-.06-1.22-.09-1.94-.02-.44-.05-.92-.07-1.39.27.52.53,1.02.74,1.43.33.65.65,1.23.94,1.74.29.51.6,1.03.92,1.56l5.18,8.23h3.37v-16.59h-3.02v8.71Z"/>
+              <path fill="#31a97f" d="M363.48,157.15c-.24.38-.53.7-.89.97-.35.26-.75.46-1.19.6s-.91.21-1.4.21c-.89,0-1.69-.22-2.39-.67-.7-.45-1.25-1.1-1.65-1.97-.4-.87-.6-1.94-.6-3.21s.2-2.32.59-3.19.95-1.54,1.65-1.99c.7-.46,1.51-.69,2.41-.69.5,0,.97.07,1.4.21.44.14.83.34,1.18.6.35.26.64.58.88.96.23.38.4.82.5,1.31h2.99c-.13-.91-.4-1.71-.8-2.43-.4-.71-.91-1.32-1.53-1.81-.62-.49-1.33-.87-2.12-1.13-.79-.26-1.64-.38-2.55-.38-1.44,0-2.73.34-3.88,1.01-1.15.68-2.05,1.65-2.72,2.92-.66,1.27-1,2.8-1,4.59s.33,3.31.99,4.58c.66,1.27,1.56,2.24,2.71,2.92,1.14.68,2.44,1.01,3.9,1.01.98,0,1.87-.15,2.68-.45s1.51-.71,2.12-1.24c.61-.53,1.1-1.14,1.47-1.83s.62-1.44.73-2.23h-3.01c-.09.49-.25.93-.49,1.31Z"/>
+              <rect fill="#31a97f" x="383.48" y="144.77" width="2.97" height="16.59"/>
+              <path fill="#31a97f" d="M414.68,161.36h3.26l-5.92-16.59h-3.77l-5.79,16.59h3.25l1.36-4.11h6.21l1.41,4.11ZM407.85,154.86l.7-2.12c.27-.86.55-1.86.85-2.99.21-.81.45-1.72.7-2.68.25.95.5,1.85.72,2.65.31,1.13.61,2.13.9,3.02l.72,2.12h-4.6Z"/>
+            </g>
+            <g>
+              <path fill="#31a97f" d="M85.64,95.57h0c-11.72,0-21.21,9.5-21.21,21.21v.38c0,7.57-6.13,13.7-13.7,13.7h-13.7s0-93.84,0-93.84C37.03,16.58,20.45,0,0,0h0v132.3c0,21.53,17.45,38.98,38.98,38.98h67.88v-54.49c0-11.72-9.5-21.21-21.21-21.21Z"/>
+              <path fill="#1b7f5a" d="M64.42,0v54.49c0,11.72,9.5,21.21,21.21,21.21h0c11.72,0,21.21-9.5,21.21-21.21v-.38c0-7.57,6.13-13.7,13.7-13.7h13.7s0,93.84,0,93.84c0,20.45,16.58,37.03,37.03,37.03h0V38.98c0-21.53-17.45-38.98-38.98-38.98h-67.88Z"/>
+            </g>
+          </g>
+        </svg>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#founders">Team</a></li>
+        <li><a href="https://www.linkedin.com/company/healthtech-community-valencia/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="#newsletter" class="btn btn-primary">Join Newsletter</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="tag">Valencia, Spain</span>
+        <h1>Where <span>HealthTech</span> professionals connect.</h1>
+        <p>We're building the English-speaking community for Biotech, MedTech, Life Sciences, and Pharma professionals in Valencia. Meet experts, share knowledge, find your next collaborator.</p>
+        <div class="hero-actions">
+          <a href="#newsletter" class="btn btn-primary">Join the Newsletter</a>
+          <a href="#about" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-icon-container">
+          <!-- White icon version -->
+          <svg viewBox="0 0 171.28 171.28" xmlns="http://www.w3.org/2000/svg">
+            <path fill="rgba(255,255,255,0.8)" d="M85.64,95.57h0c-11.72,0-21.21,9.5-21.21,21.21v.38c0,7.57-6.13,13.7-13.7,13.7h-13.7s0-93.84,0-93.84C37.03,16.58,20.45,0,0,0h0v132.3c0,21.53,17.45,38.98,38.98,38.98h67.88v-54.49c0-11.72-9.5-21.21-21.21-21.21Z"/>
+            <path fill="#fff" d="M64.42,0v54.49c0,11.72,9.5,21.21,21.21,21.21h0c11.72,0,21.21-9.5,21.21-21.21v-.38c0-7.57,6.13-13.7,13.7-13.7h13.7s0,93.84,0,93.84c0,20.45,16.58,37.03,37.03,37.03h0V38.98c0-21.53-17.45-38.98-38.98-38.98h-67.88Z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Disciplines bar ── -->
+  <div class="disciplines">
+    <p>Biotech <span>&middot;</span> MedTech <span>&middot;</span> Life Sciences <span>&middot;</span> Pharma <span>&middot;</span> Digital Health</p>
+  </div>
+
+  <!-- ── Values ── -->
+  <section class="values" id="about">
+    <div class="section-inner">
+      <p class="section-label">What We're About</p>
+      <h2 class="section-title">Three things we care about.</h2>
+      <p class="section-subtitle">Every event, conversation, and interaction comes back to these.</p>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1B7F5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3>Connection</h3>
+          <p>We bring together professionals who'd otherwise stay isolated. The network grows through genuine relationships, not transactional ones.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1B7F5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
+          </div>
+          <h3>Knowledge Exchange</h3>
+          <p>Every event is an opportunity to share practical expertise. We value substance over spectacle, real know-how over keynote polish.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1B7F5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3>Open Innovation</h3>
+          <p>Healthcare advances when disciplines cross-pollinate. We break down silos between Biotech, MedTech, Pharma, and Digital Health to spark unexpected collaboration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Newsletter ── -->
+  <section class="newsletter" id="newsletter">
+    <div class="section-inner">
+      <p class="section-label">Stay in the Loop</p>
+      <h2 class="section-title">Get notified about our events.</h2>
+      <p class="section-subtitle">We'll send you practical resources, event invitations, and occasionally something useful we've found. That's it.</p>
+
+      <form class="newsletter-form" action="#" method="POST" onsubmit="handleSubmit(event)">
+        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit" class="btn btn-white">Subscribe</button>
+      </form>
+
+      <div class="newsletter-promise">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span>We only send info about events and community resources. No spam, no selling your email. Unsubscribe anytime.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Events ── -->
+  <section class="events" id="events">
+    <div class="section-inner">
+      <p class="section-label">Events</p>
+      <h2 class="section-title">We meet in person. That's the point.</h2>
+      <p class="section-subtitle">Networking events, talks, and roundtables for HealthTech professionals in Valencia.</p>
+
+      <div class="events-content">
+        <div class="events-text">
+          <p>Our events are built around real conversations. We bring together founders, researchers, clinicians, and industry professionals for focused sessions where people actually talk to each other.</p>
+          <p>Check out our past events and photos on LinkedIn, and join the newsletter to hear about the next one.</p>
+          <a href="https://www.linkedin.com/company/healthtech-community-valencia/" target="_blank" rel="noopener" class="btn btn-primary">
+            See Past Events on LinkedIn
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <div class="events-visual">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#31A97F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          <p><strong>Next event coming soon.</strong><br>Join the newsletter to be the first to know.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Origin Story ── -->
+  <section class="origin" id="story">
+    <div class="section-inner">
+      <p class="section-label">Why We Started</p>
+      <h2 class="section-title">We built what we couldn't find.</h2>
+
+      <div class="origin-content">
+        <div class="origin-text">
+          <p>Four expats living in Valencia, all working on healthcare projects, all attending the same generic networking events. The kind where you collect 30 business cards and remember zero conversations.</p>
+          <p>We wanted something different. A room full of people who actually understand what it takes to bring a medical device to market, run a clinical trial, or build a digital health product from scratch.</p>
+          <p>So we stopped waiting and started organizing. HealthTech Community Valencia is what happens when people who care about healthcare innovation stop making small talk and start making real connections.</p>
+        </div>
+        <div class="origin-quote">
+          <p>We were tired of showing up to events and explaining what a QMS is. We wanted a room where people already get it, and we can skip straight to the good stuff.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Founders ── -->
+  <section class="founders" id="founders">
+    <div class="section-inner">
+      <p class="section-label">The Team</p>
+      <h2 class="section-title">4 people, 1 shared frustration.</h2>
+      <p class="section-subtitle">We come from different corners of healthcare, but we all landed in Valencia with the same problem: where's the community?</p>
+
+      <div class="founders-grid">
+        <div class="founder-card">
+          <div class="founder-avatar">MS</div>
+          <h3>Mariia Suleiman</h3>
+          <p class="founder-role">Co-Founder</p>
+          <p class="founder-bio">Short bio goes here. What you work on, what drives you, and why Valencia.</p>
+          <a href="#" class="founder-linkedin">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+
+        <div class="founder-card">
+          <div class="founder-avatar">OK</div>
+          <h3>Ois&iacute;n Kelly</h3>
+          <p class="founder-role">Co-Founder</p>
+          <p class="founder-bio">Short bio goes here. What you work on, what drives you, and why Valencia.</p>
+          <a href="#" class="founder-linkedin">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+
+        <div class="founder-card">
+          <div class="founder-avatar">NS</div>
+          <h3>Nina Skorytchenko</h3>
+          <p class="founder-role">Co-Founder</p>
+          <p class="founder-bio">Short bio goes here. What you work on, what drives you, and why Valencia.</p>
+          <a href="#" class="founder-linkedin">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+
+        <div class="founder-card">
+          <div class="founder-avatar">BP</div>
+          <h3>Bernardo Plaza</h3>
+          <p class="founder-role">Co-Founder</p>
+          <p class="founder-bio">Short bio goes here. What you work on, what drives you, and why Valencia.</p>
+          <a href="#" class="founder-linkedin">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <!-- White icon for dark bg -->
+        <svg viewBox="0 0 171.28 171.28" xmlns="http://www.w3.org/2000/svg">
+          <path fill="rgba(255,255,255,0.6)" d="M85.64,95.57h0c-11.72,0-21.21,9.5-21.21,21.21v.38c0,7.57-6.13,13.7-13.7,13.7h-13.7s0-93.84,0-93.84C37.03,16.58,20.45,0,0,0h0v132.3c0,21.53,17.45,38.98,38.98,38.98h67.88v-54.49c0-11.72-9.5-21.21-21.21-21.21Z"/>
+          <path fill="rgba(255,255,255,0.85)" d="M64.42,0v54.49c0,11.72,9.5,21.21,21.21,21.21h0c11.72,0,21.21-9.5,21.21-21.21v-.38c0-7.57,6.13-13.7,13.7-13.7h13.7s0,93.84,0,93.84c0,20.45,16.58,37.03,37.03,37.03h0V38.98c0-21.53-17.45-38.98-38.98-38.98h-67.88Z"/>
+        </svg>
+        <p>&copy; 2026 HealthTech Community Valencia. All rights reserved.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="https://www.linkedin.com/company/healthtech-community-valencia/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="mailto:hello@healthtechcommunity.eu">Contact Us</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Newsletter form placeholder
+    function handleSubmit(e) {
+      e.preventDefault();
+      const input = e.target.querySelector('input');
+      const email = input.value;
+      // Replace with actual form handler (Mailchimp, ConvertKit, etc.)
+      alert('Thanks! We\'ll keep you posted at ' + email + '. (Connect a form service to make this work.)');
+      input.value = '';
+    }
+  </script>
+</body>
+</html>
