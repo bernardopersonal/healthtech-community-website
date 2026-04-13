@@ -689,6 +689,8 @@
   <section class="values" id="about">
     <div class="section-inner">
       <p class="section-label">What We're About</p>
+      <p class="section-subtitle">HealthTech Community Valencia is an English-language professional community for founders, researchers, and clinicians working across Biotech, MedTech, Pharma, Life Sciences, and Digital Health.</p>
+      <p class="section-subtitle">Our mission is to build a strong HealthTech ecosystem in Valencia and beyond by connecting professionals across Biotech, MedTech, Pharma, Life Sciences, and Digital Health — encouraging collaboration, and creating an environment for responsible health innovation to reach the market.</p>
       <h2 class="section-title">Three things we care about.</h2>
       <p class="section-subtitle">Every event, conversation, and interaction comes back to these.</p>
 
@@ -739,7 +741,10 @@
       <h2 class="section-title">Get notified about our events.</h2>
       <p class="section-subtitle">We'll send you practical resources, event invitations, and occasionally something useful we've found. That's it.</p>
 
-      <form class="newsletter-form" action="#" method="POST" onsubmit="handleSubmit(event)">
+      <form class="newsletter-form" action="https://formsubmit.co/bernardoplazat@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New HTC Newsletter Subscriber">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://healthtechcommunity.eu">
         <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
         <button type="submit" class="btn btn-white">Subscribe</button>
       </form>
@@ -805,8 +810,8 @@
   <section class="founders" id="founders">
     <div class="section-inner">
       <p class="section-label">The Team</p>
-      <h2 class="section-title">4 people, 1 shared frustration.</h2>
-      <p class="section-subtitle">We come from different corners of healthcare, but we all landed in Valencia with the same problem: where's the community?</p>
+      <h2 class="section-title">4 HealthTech professionals, 1 shared frustration.</h2>
+      <p class="section-subtitle">We come from different career paths, but we all landed in Valencia with the same problem: where's the community for finding resources to do business and share knowledge?</p>
 
       <div class="founders-grid">
         <div class="founder-card">
@@ -893,15 +898,6 @@
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
 
-    // Newsletter form placeholder
-    function handleSubmit(e) {
-      e.preventDefault();
-      const input = e.target.querySelector('input');
-      const email = input.value;
-      // Replace with actual form handler (Mailchimp, ConvertKit, etc.)
-      alert('Thanks! We\'ll keep you posted at ' + email + '. (Connect a form service to make this work.)');
-      input.value = '';
-    }
   </script>
 </body>
 </html>
