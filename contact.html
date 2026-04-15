@@ -163,16 +163,42 @@
       text-decoration: none;
     }
     footer a:hover { color: var(--bright-green); }
+
+    .alert {
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .alert-success {
+      background: var(--mint-mist);
+      color: var(--deep-green);
+    }
+    .alert-error {
+      background: #fef2f2;
+      color: #b91c1c;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <a href="/" class="back-link">&larr; Back to HealthTech Community Valencia</a>
 
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('status') === 'success') {
+        document.write('<div class="alert alert-success">Thanks for reaching out! We\'ll get back to you soon.</div>');
+      } else if (params.get('status') === 'error') {
+        document.write('<div class="alert alert-error">Something went wrong. Please try again or email us directly at contact@healthtechcommunity.eu</div>');
+      }
+    </script>
+
     <h1>Get in Touch</h1>
     <p class="subtitle">Contact us if you want to be a speaker, sponsor, or collaborate on our next event. We'll get back to you shortly.</p>
 
-    <form action="mailto:contact@healthtechcommunity.eu" method="POST" enctype="text/plain">
+    <form action="send.php" method="POST">
+      <input type="hidden" name="_form" value="contact">
 
       <div class="form-group">
         <label for="name">Full Name</label>

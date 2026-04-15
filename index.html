@@ -802,7 +802,8 @@
       <h2 class="section-title">Get notified about our events.</h2>
       <p class="section-subtitle">We'll send you practical resources, event invitations and share useful insights we've found related to our industries. That's it.</p>
 
-      <form class="newsletter-form" action="mailto:contact@healthtechcommunity.eu" method="POST" enctype="text/plain">
+      <form class="newsletter-form" action="send.php" method="POST">
+        <input type="hidden" name="_form" value="newsletter">
         <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
         <button type="submit" class="btn btn-white">Subscribe</button>
       </form>
@@ -989,6 +990,16 @@
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
 
+    // Newsletter success message
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('status') === 'subscribed') {
+      const form = document.querySelector('.newsletter-form');
+      const msg = document.createElement('p');
+      msg.style.cssText = 'color: var(--white); font-weight: 600; margin-bottom: 16px;';
+      msg.textContent = 'Thanks for subscribing! We\'ll keep you posted.';
+      form.parentNode.insertBefore(msg, form);
+      form.style.display = 'none';
+    }
   </script>
 </body>
 </html>
