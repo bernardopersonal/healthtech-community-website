@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get in Touch | HealthTech Community Valencia</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 171.28 171.28'%3E%3Cpath fill='%2331a97f' d='M85.64,95.57c-11.72,0-21.21,9.5-21.21,21.21v.38c0,7.57-6.13,13.7-13.7,13.7h-13.7V37.03C37.03,16.58,20.45,0,0,0v132.3c0,21.53,17.45,38.98,38.98,38.98h67.88v-54.49c0-11.72-9.5-21.21-21.21-21.21Z'/%3E%3Cpath fill='%231b7f5a' d='M64.42,0v54.49c0,11.72,9.5,21.21,21.21,21.21s21.21-9.5,21.21-21.21v-.38c0-7.57,6.13-13.7,13.7-13.7h13.7v93.84c0,20.45,16.58,37.03,37.03,37.03V38.98C171.28,17.45,153.83,0,132.3,0H64.42Z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --deep-green: #1B7F5A;
+      --bright-green: #31A97F;
+      --mint-mist: #E8F5EF;
+      --light-grey: #F5F5F5;
+      --dark-green-black: #0A1A15;
+      --charcoal: #2C2C2C;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--charcoal);
+      line-height: 1.7;
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+      flex: 1;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 40px;
+      color: var(--deep-green);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    h1 {
+      font-size: 2.2rem;
+      color: var(--dark-green-black);
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 1.05rem;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--dark-green-black);
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--bright-green);
+    }
+
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+      background: var(--deep-green);
+      color: var(--white);
+    }
+    .btn:hover {
+      background: var(--bright-green);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(49,169,127,0.3);
+    }
+
+    .privacy-note {
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: #888;
+    }
+    .privacy-note a {
+      color: var(--deep-green);
+    }
+
+    footer {
+      background: var(--dark-green-black);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    footer p {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.82rem;
+    }
+    footer a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--bright-green); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">&larr; Back to HealthTech Community Valencia</a>
+
+    <h1>Get in Touch</h1>
+    <p class="subtitle">Contact us if you want to be a speaker, sponsor, or collaborate on our next event. We'll get back to you shortly.</p>
+
+    <form action="mailto:contact@healthtechcommunity.eu" method="POST" enctype="text/plain">
+
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company / Organization</label>
+        <input type="text" id="company" name="company" placeholder="Where you work">
+      </div>
+
+      <div class="form-group">
+        <label for="interest">I'm interested in</label>
+        <select id="interest" name="interest" required>
+          <option value="" disabled selected>Select an option</option>
+          <option value="Speaker">Being a speaker</option>
+          <option value="Sponsor">Sponsoring an event</option>
+          <option value="Co-host">Co-hosting an event</option>
+          <option value="Other">Other collaboration</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Tell us more</label>
+        <textarea id="message" name="message" placeholder="What would you like to talk about? How would you like to collaborate? Any details help."></textarea>
+      </div>
+
+      <button type="submit" class="btn">Send Message</button>
+
+      <p class="privacy-note">By submitting this form you agree to our <a href="privacy.html">Privacy Policy</a>. We'll only use your data to respond to your inquiry.</p>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 HealthTech Community Valencia. <a href="privacy.html">Privacy Policy</a></p>
+  </footer>
+</body>
+</html>
