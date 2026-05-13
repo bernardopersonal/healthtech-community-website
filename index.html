@@ -126,6 +126,44 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.1);
     }
 
+    /* ── Toast notification ── */
+    .toast {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: var(--deep-green);
+      color: var(--white);
+      padding: 18px 56px 18px 24px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(10,26,21,0.18);
+      animation: toastIn 0.4s ease-out;
+    }
+    .toast.toast-error { background: #b14444; }
+    .toast-close {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px 12px;
+      opacity: 0.8;
+    }
+    .toast-close:hover { opacity: 1; }
+    @keyframes toastIn {
+      from { transform: translateY(-100%); }
+      to   { transform: translateY(0); }
+    }
+
     /* ── Language toggle ── */
     .lang-toggle {
       display: inline-flex;
@@ -1214,17 +1252,30 @@
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
 
-    // Newsletter status message
+    // Newsletter status toast
     const params = new URLSearchParams(window.location.search);
     const status = params.get('status');
     if (NEWSLETTER_MSG[status]) {
-      const form = document.querySelector('.newsletter-form');
-      const msg = document.createElement('p');
-      msg.style.cssText = 'color: var(--white); font-weight: 600; margin-bottom: 16px; max-width: 480px; margin-left: auto; margin-right: auto;';
       const lang = detectLang();
-      msg.textContent = NEWSLETTER_MSG[status][lang] || NEWSLETTER_MSG[status].en;
-      form.parentNode.insertBefore(msg, form);
-      if (status !== 'error') form.style.display = 'none';
+      const toast = document.createElement('div');
+      toast.className = 'toast' + (status === 'error' ? ' toast-error' : '');
+      toast.setAttribute('role', 'status');
+      toast.textContent = NEWSLETTER_MSG[status][lang] || NEWSLETTER_MSG[status].en;
+      const close = document.createElement('button');
+      close.className = 'toast-close';
+      close.setAttribute('aria-label', 'Close');
+      close.innerHTML = '&times;';
+      close.addEventListener('click', () => toast.remove());
+      toast.appendChild(close);
+      document.body.insertBefore(toast, document.body.firstChild);
+
+      if (status !== 'error') {
+        const form = document.querySelector('.newsletter-form');
+        if (form) form.style.display = 'none';
+      }
+      // Strip ?status= so a reload doesn't re-show the toast
+      const clean = window.location.pathname + window.location.hash;
+      history.replaceState({}, '', clean);
     }
   </script>
 </body>
