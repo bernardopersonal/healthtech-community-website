@@ -872,7 +872,7 @@
             <line x1="8" y1="2" x2="8" y2="6"/>
             <line x1="3" y1="10" x2="21" y2="10"/>
           </svg>
-          <p data-i18n-html="events.next"><strong>Unlocking Valencia's Health Innovation Ecosystem</strong><br>Thu, Apr 30, 5:00 PM CEST<br>Camara Valencia, C/Poeta Querol 15, 46002 Valencia</p>
+          <p data-i18n-html="events.next"><strong>The Hospital of the Future: Healthcare Innovation Inside Hospitals in Valencia</strong><br>Wed, Jun 3, 5:30&ndash;7:30 PM CEST<br>La Harinera (Sala Polivalente), C/ Joan Verdeguer 116, 46024 Val&egrave;ncia</p>
           <a href="https://www.linkedin.com/events/7447323665047818240/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-weight: 600; color: var(--deep-green); text-decoration: none;" data-i18n="events.register">Register on LinkedIn &rarr;</a>
           <p style="margin-top: 16px;"><a href="#partner" style="color: var(--deep-green); font-weight: 600;" data-i18n="events.speaker">Want to be a speaker or sponsor? Get involved &rarr;</a></p>
         </div>
@@ -1060,7 +1060,7 @@
         "events.subtitle": "Networking, talleres y mesas redondas para profesionales de HealthTech en Valencia.",
         "events.text": "Nuestros eventos giran en torno a conversaciones reales. Reunimos a fundadores, investigadores, clínicos y profesionales del sector en sesiones enfocadas, donde la gente interactúa para construir una red profesional valiosa y, a veces, incluso amistades.",
         "events.link": "Ver eventos pasados en LinkedIn",
-        "events.next": "<strong>Desbloqueando el ecosistema de innovación sanitaria de Valencia</strong><br>Jue, 30 abr, 17:00 CEST<br>Cámara Valencia, C/Poeta Querol 15, 46002 Valencia",
+        "events.next": "<strong>El hospital del futuro: innovación sanitaria desde los hospitales de Valencia</strong><br>Mié, 3 jun, 17:30–19:30 CEST<br>La Harinera (Sala Polivalente), C/ Joan Verdeguer 116, 46024 València",
         "events.register": "Regístrate en LinkedIn &rarr;",
         "events.speaker": "¿Quieres ser ponente o patrocinador? Participa &rarr;",
 
@@ -1102,9 +1102,23 @@
       }
     };
 
-    const NEWSLETTER_SUCCESS = {
-      en: "Thanks for subscribing! We'll keep you posted.",
-      es: "¡Gracias por suscribirte! Te mantendremos al tanto."
+    const NEWSLETTER_MSG = {
+      pending: {
+        en: "Almost there! Check your inbox and click the confirmation link to complete your subscription.",
+        es: "¡Casi listo! Revisa tu bandeja de entrada y haz clic en el enlace de confirmación para completar la suscripción."
+      },
+      confirmed: {
+        en: "Subscription confirmed. We'll keep you posted!",
+        es: "Suscripción confirmada. ¡Te mantendremos al tanto!"
+      },
+      subscribed: {
+        en: "Thanks for subscribing! We'll keep you posted.",
+        es: "¡Gracias por suscribirte! Te mantendremos al tanto."
+      },
+      error: {
+        en: "Something went wrong. Please try again in a moment.",
+        es: "Algo ha fallado. Inténtalo de nuevo en un momento."
+      }
     };
 
     function swapAttr(el, attr, datasetKey, enDatasetKey, value) {
@@ -1200,15 +1214,17 @@
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
 
-    // Newsletter success message
+    // Newsletter status message
     const params = new URLSearchParams(window.location.search);
-    if (params.get('status') === 'subscribed') {
+    const status = params.get('status');
+    if (NEWSLETTER_MSG[status]) {
       const form = document.querySelector('.newsletter-form');
       const msg = document.createElement('p');
-      msg.style.cssText = 'color: var(--white); font-weight: 600; margin-bottom: 16px;';
-      msg.textContent = NEWSLETTER_SUCCESS[detectLang()] || NEWSLETTER_SUCCESS.en;
+      msg.style.cssText = 'color: var(--white); font-weight: 600; margin-bottom: 16px; max-width: 480px; margin-left: auto; margin-right: auto;';
+      const lang = detectLang();
+      msg.textContent = NEWSLETTER_MSG[status][lang] || NEWSLETTER_MSG[status].en;
       form.parentNode.insertBefore(msg, form);
-      form.style.display = 'none';
+      if (status !== 'error') form.style.display = 'none';
     }
   </script>
 </body>
