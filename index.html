@@ -458,25 +458,44 @@
       color: var(--charcoal);
       margin-bottom: 28px;
     }
-    .events-visual {
+    .upcoming-events {
+      display: grid;
+      gap: 20px;
+    }
+    .upcoming-event {
+      overflow: hidden;
       background: var(--white);
-      border-radius: 16px;
-      padding: 48px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      min-height: 300px;
       border: 1px solid rgba(27,127,90,0.08);
+      border-radius: 16px;
     }
-    .events-visual svg { width: 48px; height: 48px; margin-bottom: 20px; }
-    .events-visual p {
-      font-size: 0.95rem;
+    .upcoming-event-image {
+      display: block;
+      aspect-ratio: 16 / 7;
+      overflow: hidden;
+    }
+    .upcoming-event-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .upcoming-event-details { padding: 20px 24px 24px; }
+    .upcoming-event-details h3 {
+      color: var(--deep-green);
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    .upcoming-event-details p {
       color: var(--warm-grey);
-      line-height: 1.6;
+      font-size: 0.9rem;
+      margin-bottom: 14px;
     }
-    .events-visual p strong { color: var(--deep-green); }
+    .upcoming-event-details a {
+      color: var(--deep-green);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .upcoming-event-details a:hover { color: var(--bright-green); }
 
     /* ── Origin Story ── */
     .origin {
@@ -903,25 +922,27 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
         </div>
-        <div class="events-visual">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#31A97F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-            <line x1="16" y1="2" x2="16" y2="6"/>
-            <line x1="8" y1="2" x2="8" y2="6"/>
-            <line x1="3" y1="10" x2="21" y2="10"/>
-          </svg>
-          <p data-i18n-html="events.next"><strong>FemTech in Healthcare: Trends, Challenges &amp; Opportunities</strong><br>Mon, Sep 22, 5:30 PM CEST<br>La Harinera (Sala Polivalente), C/ Joan Verdeguer 116, 46024 Val&egrave;ncia</p>
-          <div style="margin-top: 16px; font-size: 0.9rem; line-height: 1.6; color: var(--charcoal); text-align: left;">
-            <p style="margin-bottom: 8px;"><strong>Speakers:</strong></p>
-            <ul style="margin-left: 16px; margin-bottom: 12px; list-style: none; padding: 0;">
-              <li style="margin-bottom: 4px;">Frederike Engel (Femtech Spain) – FemTech landscape and women startups</li>
-              <li style="margin-bottom: 4px;">Alexandre Honwana (Murisana) – Trust and complexity in women's health</li>
-              <li>Marisol Quintero (Columbus Venture Partners) – Investor perspective on fundable women's health tech</li>
-            </ul>
-            <p style="font-size: 0.85rem; color: var(--warm-grey); margin-top: 12px;">🎁 Plus, we'll raffle off free tickets to VDS—register and join us for your chance to win!</p>
-          </div>
-          <a href="https://www.eventbrite.com/e/femtech-in-healthcare-trends-challenges-tickets-1998788318667" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-weight: 600; color: var(--deep-green); text-decoration: none;" data-i18n="events.register">Register on Eventbrite &rarr;</a>
-          <p style="margin-top: 16px;"><a href="#partner" style="color: var(--deep-green); font-weight: 600;" data-i18n="events.speaker">Want to be a speaker or sponsor? Get involved &rarr;</a></p>
+        <div class="upcoming-events">
+          <article class="upcoming-event">
+            <a class="upcoming-event-image" href="https://www.linkedin.com/events/7504188358634504192/" target="_blank" rel="noopener" aria-label="HealthTech Community Valencia - VDS Rooftop Pre-Party on LinkedIn">
+              <img src="https://media.licdn.com/dms/image/v2/D4D1EAQHKxYdrDrHnng/event-background-image-crop_270_480/B4DaCQ7jAHGkAI-/0/1789137925042?e=1791882000&v=beta&t=zuUQ4tRTJ4iDw5Vo59zsYW2QOUZEapMQ1E5swsyvQGU" alt="HealthTech Community Valencia - VDS Rooftop Pre-Party">
+            </a>
+            <div class="upcoming-event-details">
+              <h3>HealthTech Community Valencia - VDS Rooftop Pre-Party</h3>
+              <p data-i18n="events.rooftop.date">Tue, Oct 20, 5:30 AM CEST</p>
+              <a href="https://www.linkedin.com/events/7504188358634504192/" target="_blank" rel="noopener" data-i18n="events.viewLinkedIn">View event on LinkedIn &rarr;</a>
+            </div>
+          </article>
+          <article class="upcoming-event">
+            <a class="upcoming-event-image" href="https://www.linkedin.com/events/7504199787609735169/" target="_blank" rel="noopener" aria-label="VDS Panel: Implementing AI-Enabled Technologies in HealthTech on LinkedIn">
+              <img src="https://media.licdn.com/dms/image/v2/D4D1EAQH6nyF2UGD92Q/event-background-image-crop_270_480/B4DaCRF8N7KYAI-/0/1789140650043?e=1791882000&v=beta&t=Nyx-BbMNx8LO-81fFTDAbKyETIqlzMkBY1DOCbKAYE" alt="VDS Panel: Implementing AI-Enabled Technologies in HealthTech">
+            </a>
+            <div class="upcoming-event-details">
+              <h3>VDS Panel: Implementing AI-Enabled Technologies in HealthTech</h3>
+              <p data-i18n="events.panel.date">Wed, Oct 21, 12:00 PM CEST</p>
+              <a href="https://www.linkedin.com/events/7504199787609735169/" target="_blank" rel="noopener" data-i18n="events.viewLinkedIn">View event on LinkedIn &rarr;</a>
+            </div>
+          </article>
         </div>
       </div>
     </div>
@@ -1107,9 +1128,9 @@
         "events.subtitle": "Networking, talleres y mesas redondas para profesionales de HealthTech en Valencia.",
         "events.text": "Nuestros eventos giran en torno a conversaciones reales. Reunimos a fundadores, investigadores, clínicos y profesionales del sector en sesiones enfocadas, donde la gente interactúa para construir una red profesional valiosa y, a veces, incluso amistades.",
         "events.link": "Ver eventos pasados en LinkedIn",
-        "events.next": "<strong>FemTech en sanidad: tendencias, desafíos y oportunidades</strong><br>Lun, 22 sep, 17:30 CEST<br>La Harinera (Sala Polivalente), C/ Joan Verdeguer 116, 46024 València",
-        "events.register": "Regístrate en Eventbrite &rarr;",
-        "events.speaker": "¿Quieres ser ponente o patrocinador? Participa &rarr;",
+        "events.rooftop.date": "Mar, 20 oct, 5:30 CEST",
+        "events.panel.date": "Mié, 21 oct, 12:00 CEST",
+        "events.viewLinkedIn": "Ver evento en LinkedIn &rarr;",
 
         // Origin
         "origin.label": "Por qué empezamos",
